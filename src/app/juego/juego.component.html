@@ -1,0 +1,19 @@
+<div class="options-container">
+  <div class="option" [class.selected]="userChoice === 'piedra'" (click)="selectOption('piedra')">Piedra</div>
+  <div class="option" [class.selected]="userChoice === 'papel'" (click)="selectOption('papel')">Papel</div>
+  <div class="option" [class.selected]="userChoice === 'tijera'" (click)="selectOption('tijera')">Tijera</div>
+</div>
+
+<div class = "ruedina "*ngIf="isComputing">
+  <mat-progress-spinner mode="indeterminate" diameter="48"></mat-progress-spinner>
+</div>
+
+<div *ngIf="userChoice && !isComputing">
+  <p>Tu elección: {{ userChoice }}</p>
+  <p>Elección del ordenador {{ computerChoice }}</p>
+</div>
+
+<div class="result" *ngIf="winner && !isComputing">
+  <h2>{{ winner }}</h2>
+  <button mat-raised-button color="primary" (click)="resetGame()">Reiniciar juego</button>
+</div>
